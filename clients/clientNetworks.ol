@@ -13,6 +13,7 @@ outputPort DockerIn {
 main {
 	println@Console("***** NETWORKS LIST *****")();
 	networks@DockerIn(rq)(response);
+	networks@DockerIn({ filters << { name = "JungCloudNode" } })( ns )
 	valueToPrettyString@StringUtils( response )( s );
 	println@Console( s )()
 }

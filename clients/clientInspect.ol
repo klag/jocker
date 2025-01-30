@@ -11,10 +11,10 @@ outputPort DockerIn {
 }
 
 main {
-	rq.id = "myFirstCtn3";
+	rq.id = "infoservice";
 	rq.size = true;
 	println@Console("***** INSPECT "+ rq.id +" CONTAINER *****")();
-	inspect@DockerIn(rq)(response);
+	inspectContainer@DockerIn(rq)(response);
 	valueToPrettyString@StringUtils(response)(s);
 	println@Console( s )()
 }

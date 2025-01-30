@@ -1,6 +1,8 @@
 include "console.iol"
 include "string_utils.iol"
 include "json_utils.iol"
+include "file.iol"
+include "converter.iol"
 
 include "../InterfaceAPI.iol"
 
@@ -14,15 +16,18 @@ main {
 	if ( #rgas == 0 ) {
 		 println@Console("Usage: jolie clientLogs container-id")()
 	};
-	rq.id=args[ 0 ];
-	rq.follow = true;
+	rq.id="test_testservice_cnt_1_0";
+	rq.follow = false;
 	rq.stderr = true;
 	rq.stdout = true;
-	rq.since = 1428990821;
-	rq.timestamps = true;
-	rq.tail = "all";
+	rq.since = 0;
+	rq.timestamps = false;
+	rq.tail = "2000";
+	
+							
+
 	println@Console("***** RETURN THE LOGS OF "+ rq.id +" CONTAINER *****")();
 	logs@DockerIn(rq)(response);
-	valueToPrettyString@StringUtils( response )( s );
-	println@Console( s )()
+	rawToString@Converter( response.log )( logs )
+	println@Console( logs )()
 }

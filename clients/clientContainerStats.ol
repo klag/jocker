@@ -11,8 +11,8 @@ outputPort DockerIn {
 }
 
 main {
-	rq.id = "jolie-ctn";
-	rq.stream = true;
+	rq.id = args[0];
+	rq.stream = false;
 	println@Console("***** STATS "+ rq.id +" CONTAINER *****")();
 	statsContainer@DockerIn(rq)(response);
 	valueToPrettyString@StringUtils( response )( s );

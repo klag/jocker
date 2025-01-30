@@ -11,7 +11,7 @@ outputPort DockerIn {
 }
 
 main {
-	rq.term = "ubuntu";
+	rq.term = "mysql";
 	println@Console("***** SEARCH IN THE HUB "+ rq.term +" *****")();
 	imageSearch@DockerIn(rq)(response);
 	valueToPrettyString@StringUtils( response )( s );

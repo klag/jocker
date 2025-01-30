@@ -12,12 +12,12 @@ outputPort DockerIn {
 }
 
 main {
-	file.filename = "TestingBuild.tar";
+	file.filename = "docker.tar";
 	file.format = "binary";
 	readFile@File(file)(rq.file);
 
 	rq.t = "prova:latest";
-	rq.dockerfile = "TestingBuild/Dockerfile";
+	rq.dockerfile = "./Dockerfile";
 	println@Console("***** BUILD IMAGE *****")();
 	build@DockerIn(rq)(response);
 	valueToPrettyString@StringUtils( response )( s );

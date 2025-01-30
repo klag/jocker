@@ -14,14 +14,14 @@ outputPort DockerIn {
 
 main {
 	// * Loading file tar and prepare to build
-  file.filename = "TestingBuild.tar";
+  	file.filename = "TestingBuild.tar";
 	file.format = "binary";
 	// *** build tar file
 	readFile@File(file)(rqImg.file);
 
 	// * Creating a image object that represent the image you want to create and send to Docker.
 	// *** the format <name>:<tag> of the image !REQUIRED!
-  rqImg.t = "serverhello:latest";
+  	rqImg.t = "serverhello:latest";
 	// *** specifying the path of your Dockerfile, if not the path is /Dockerfile
 	rqImg.dockerfile = "TestingBuild/Dockerfile";
 	println@Console("***** BUILD IMAGE SERVER *****")();
@@ -29,7 +29,7 @@ main {
 	build@DockerIn(rqImg)(response);
 
 	// * Creating a container object that represent the container you want to create and send to Docker. !REQUIRED!
-  rqCnt.name = "helloserver";
+  	rqCnt.name = "helloserver";
 	// *** specifying the image of the container you want to create, if not the image is <none>
 	rqCnt.Image = "serverhello";
 	// *** specifying the port you want to expose for the container
@@ -51,7 +51,7 @@ main {
 	valueToPrettyString@StringUtils( responseC )( s );
 	println@Console( s )();
 
-  rqSer.id = "helloserver";
+  	rqSer.id = "helloserver";
 	println@Console("***** START " +rqSer.id+ " CONTAINER *****")();
 	startContainer@DockerIn(rqSer)(response)
 
