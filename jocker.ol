@@ -20,7 +20,7 @@ limitations under the License.
 from console import Console
 from string-utils import StringUtils
 from json-utils import JsonUtils
-from JockerInterface import JockerInterface
+from .public.interfaces.JockerInterface import JockerInterface
 
 type JockerParameters {
 	locations {

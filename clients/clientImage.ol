@@ -1,7 +1,7 @@
 from console import Console
 from string-utils import StringUtils
 from json-utils import JsonUtils
-from ..packages.JockerInterface import JockerInterface
+from ..public.interfaces.JockerInterface import JockerInterface
 
 service Test {
 
