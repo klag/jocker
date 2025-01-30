@@ -5,10 +5,10 @@ include "file.iol"
 
 include "../InterfaceAPI.iol"
 
-outputPort DockerIn {
+outputPort Jocker {
 	Location: "socket://localhost:8008"
 	Protocol: sodep
-	Interfaces: InterfaceAPI
+	Interfaces: JockerInterface
 }
 
 main {

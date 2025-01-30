@@ -1,19 +1,24 @@
-include "console.iol"
-include "string_utils.iol"
-include "json_utils.iol"
+from console import Console
+from string-utils import StringUtils
+from json-utils import JsonUtils
+from ..packages.JockerInterface import JockerInterface
 
-include "../InterfaceAPI.iol"
+service Test {
 
-outputPort DockerIn {
-	Location: "socket://localhost:8008"
-	Protocol: sodep
-	Interfaces: InterfaceAPI
-}
+	embed Console as Console
+	embed StringUtils as StringUtils 
 
-main {
-	
-	println@Console("***** RETURN THE LIST OF ALL IMAGES *****")();
-	images@DockerIn(rq)(response);
-	valueToPrettyString@StringUtils( response )( s );
-	println@Console( s )()
+	outputPort Jocker {
+		Location: "socket://localhost:8008"
+		Protocol: sodep
+		Interfaces: JockerInterface
+	}
+
+	main {
+		
+		println@Console("***** RETURN THE LIST OF ALL IMAGES *****")();
+		images@Jocker(rq)(response);
+		valueToPrettyString@StringUtils( response )( s );
+		println@Console( s )()
+	}
 }

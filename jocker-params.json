@@ -1,0 +1,6 @@
+{
+    "locations": {
+        "jocker": "socket://localhost:8008",
+        "dockerD": "localsocket://var/run/docker.sock"
+    }
+}
